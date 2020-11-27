@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+.loader {
+  border: 16px solid lightgray;
+  border-top: 16px solid dodgerblue;
+  border-radius: 50%;
+  border-width: 10px;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+    
+button {
+outline: none;
+border-radius: 100px;
+color: white;
+background-color: dodgerblue;
+border: none;
+padding: 7px;
+width: 150px;
+box-shadow: 0 5px royalblue;
+
+}
+    
+button:hover {
+box-shadow: 0 3px royalblue;
+transform: translateY(2px);
+}
+</style>
+
+
+<div class="topnav">
+  <a href="/">Home</a>
+  <a class="active" href="mine">Mine Blocks</a>
+  <a href="transaction">Make a Transaction</a>
+  <a href="buy">Buy CryptoCoin</a>
+  <a href="login">Login</a>
+</div>
+
+<div class="text-box">
+    <h3>Mine CryptoCoin.</h3>
+    <p>Mining can take 5-10 minutes. Your reward can vary from 0.1 to 1 CryptoCoin.</p>
+    <br>
+    <button type="button" onclick=mine() id="mine">Start mining process</button>
+</div>
+<script>
+    function mine() {
+        var spinner = document.createElement('div');
+        spinner.setAttribute("class", "loader");
+        document.getElementById("mine").replaceWith(spinner)
+        var text = document.createElement('div');
+        text.setAttribute("class", "text-box");
+        text.appendChild(document.createTextNode("Mining block. Please wait."));
+        document.body.appendChild(text);
+    }
+</script>

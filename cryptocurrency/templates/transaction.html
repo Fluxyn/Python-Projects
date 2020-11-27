@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<style>
+.form-field {
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 3px;
+  outline: none;
+  padding: 3px;
+  background: none;
+  width: 150px;
+}
+    
+.submit {
+outline: none;
+border-radius: 100px;
+color: white;
+background-color: dodgerblue;
+border: none;
+padding: 7px;
+width: 150px;
+box-shadow: 0 5px royalblue;
+
+}
+    
+.submit:hover {
+box-shadow: 0 3px royalblue;
+transform: translateY(2px);
+}
+   
+.alert {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 15px;
+}
+</style>
+
+<div class="topnav">
+<a href="/">Home</a>
+  <a href="mine">Mine Blocks</a>
+  <a class="active" href="transaction">Make a Transaction</a>
+  <a href="buy">Buy CryptoCoin</a>
+  <a href="login">Login</a>
+</div>
+
+<div class="text-box">
+  <h3>Create a transaction. </h3>
+  <p>Trasactions can take up to 15 minutes to proccess due to blockchain security and encryption.</p>
+</div>
+  
+<div class="text-box">
+    <form action='transaction' method='POST'>
+        <font size="-1">From:</font> <input type='text' name='from' id='from' class="form-field" value={{ user_email }} readonly/>
+        <br>
+        <font size="-1">To:</font> <input type='email' name='to' id='to' class="form-field" placeholder='email'/>
+        <br>
+        <font size="-1">Amount:</font> <input type='number' name='amount' id='amount' min=0 max={{ user_balance }} step=0.1 class="form-field" placeholder='amount'/>
+        <br><br>
+        <input type='submit' name='submit' class="submit"/>
+    </form>
+</div>
+
